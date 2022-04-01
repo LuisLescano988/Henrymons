@@ -10,72 +10,38 @@ module.exports = (sequelize) => {
       allowNull: false,
       primaryKey: true,
     },
-    
+
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     hp: {
       type: DataTypes.INTEGER,
-      defaultValue: Math.floor(Math.random() * 101),
-      validate: {
-        isNumeric: true,
-        max: 255,
-        min: 1,
-      },
+    },
+    img: {
+      type: DataTypes.TEXT,
     },
     attack: {
       type: DataTypes.INTEGER,
-      defaultValue: Math.floor(Math.random() * 101),
-      validate: {
-        isNumeric: true,
-        max: 255,
-        min: 1,
-      },
     },
-
     defense: {
       type: DataTypes.INTEGER,
-      defaultValue: Math.floor(Math.random() * 101),
-      validate: {
-        isNumeric: true,
-        max: 255,
-        min: 1,
-      },
     },
     speed: {
       type: DataTypes.INTEGER,
-      defaultValue: Math.floor(Math.random() * 101),
-      validate: {
-        isNumeric: true,
-        max: 255,
-        min: 1,
-      },
     },
     height: {
       type: DataTypes.INTEGER,
-      defaultValue: Math.floor(Math.random() * 101),
-      validate: {
-        isNumeric: true,
-        max: 255,
-        min: 1,
-      },
     },
     weight: {
       type: DataTypes.INTEGER,
-      defaultValue: Math.floor(Math.random() * 101),
-      validate: {
-        isNumeric: true,
-        max: 255,
-        min: 1,
-      },
     },
     createdInDb: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
       allowNull: false,
     },
-    
-
-  });
+  
+  }, {timestamps: false}
+  );
 };
