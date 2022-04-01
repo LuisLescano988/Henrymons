@@ -15,13 +15,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    image: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue:
-        "https://pokemon-the-wiki.herokuapp.com/pokemons/image/default-pokemon",
-      
-    },
     hp: {
       type: DataTypes.INTEGER,
       defaultValue: Math.floor(Math.random() * 101),
