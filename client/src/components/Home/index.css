@@ -1,0 +1,90 @@
+.top_nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 10%;
+}
+
+.cards {
+    display:inline-flex;
+    margin-left: 20%;  
+    justify-content: center;
+}
+
+.loading {
+    /* justify-content: center; */
+    margin-left: 15%;
+}
+
+.loading_title {
+    color: white;
+    font-size: 60px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.please_reload {
+    color: white;
+    margin-top: 8px;
+    font-size: 48px;
+}
+
+.home_title {
+    color: white;
+    font-size: 54px;
+    justify-content: center;
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+}
+
+select {
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.link_create {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+    border: 1px solid red;
+    padding: 5px;
+    border-radius: 4px;
+    background: transparent;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.link_create:hover{
+    color: black;
+    background: white;
+    border-color: black;
+}
+
+.link_create:visited{
+    color: none;
+}
+
+.btn_reload {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    background: transparent;
+    border-color: red;
+    color: white;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn_reload:hover {
+    color: #000000;
+    background: white;
+    border-color: #000000;
+}

@@ -1,0 +1,75 @@
+.loading_title {
+    color: white;
+    font-size: 60px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.please_w {
+    color: #000000;
+    margin-top: 12px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.details_container {
+    background: linear-gradient(
+        red 50%,
+        white 50%);
+    width: 700px;
+    height: 700px;
+    /* padding: 2%; */
+    margin-top: 20px;
+    margin-left: 25%;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    border-radius: 70%;
+    border: 10px solid black;
+    display: flex;
+}
+
+.left_details {
+    text-align: center;
+    margin-left: 10%;
+    margin-top: 4%;
+}
+
+.right_details {
+    margin-left: 1%;
+    margin-top: 16%;
+}
+
+.name1, .id1 {
+    color: white;
+    margin-top: 20%;
+}
+
+.name1{
+    color: white;
+}
+
+.btn {
+    margin-left: 10%;
+    margin-top: 20%;
+}
+
+.btn_home {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 9px;
+    color: #000000;
+    background: white;
+    border-color: red;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 20%;
+    margin-top: 180px
+}
+
+.btn_home:hover {
+    background: red;
+    border-color: white;
+    color: #000000;
+    border-radius: 9px;
+}

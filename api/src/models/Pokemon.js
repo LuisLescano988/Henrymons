@@ -18,8 +18,11 @@ module.exports = (sequelize) => {
     hp: {
       type: DataTypes.INTEGER,
     },
-    img: {
+    image: {
       type: DataTypes.TEXT,
+      allowNull: false,
+      defaultValue:
+        "https://pokemon-the-wiki.herokuapp.com/pokemons/image/default-pokemon",
     },
     attack: {
       type: DataTypes.INTEGER,

@@ -1,0 +1,74 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    background-image: url('../images/background3.png');
+    background-size: cover;
+    background-position: center center;
+    flex-wrap: wrap;
+    background-attachment: fixed;
+    height: 100vh;    
+}
+
+.landing_title {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 55px;
+    margin-left: 33%;
+    margin-top: 60px;
+}
+
+.landing_btn {
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50% , -50%);    
+    width: 350px;
+    height: 60px;
+    border-radius: 100px;
+    font-size: 35px;
+    text-align: center;
+    color: #ffffff;
+    background: transparent;    
+    border: 3px solid red;    
+}
+
+.container{    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%) ;
+}
+
+.ballContainer{
+    background-size: cover;
+    background-position: center center;
+    flex-wrap: wrap;
+    background-attachment: fixed;
+    overflow: hidden;
+    height: 350px;
+    width: 350px;
+    background-image:url('../images/pokebola.gif') ;
+
+}
+
+
+.ballContainer:hover {
+    cursor: pointer;
+    color: #fff;
+    rotate: 15%;    
+    animation-duration: 0.5s;
+}
+
+.footer {
+    text-align: center;
+    color: black;
+    bottom: 0;
+    margin-bottom: 15px;
+    width: 100%;
+    position: fixed;
+    font-size: 20px;
+    font-weight: bold;
+}

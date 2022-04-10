@@ -27,7 +27,7 @@ const { v4: uuidv4 } = require('uuid');
 router.get('/', async (req, res) => {
     try {
         let typesApi = await axios.get('https://pokeapi.co/api/v2/type');
-        types = typesApi.data.results.map(p => p.name);
+        let types = typesApi.data.results.map(p => p.name);
         //console.log('ALL TYPES: ', types);
         types.forEach(t => {
             Type.findOrCreate({
