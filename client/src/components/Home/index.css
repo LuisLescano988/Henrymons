@@ -4,12 +4,14 @@
     justify-content: center;
     margin: 0 auto;
     gap: 10%;
+        /* -webkit-text-stroke: 3px black; */
 }
 
 .cards {
     display:inline-flex;
     margin-left: 20%;  
     justify-content: center;
+    -webkit-text-stroke: 1px black;
 }
 
 .loading {
@@ -34,6 +36,7 @@
     color: white;
     font-size: 54px;
     justify-content: center;
+    -webkit-text-stroke: 3px black;
 }
 
 .filters {

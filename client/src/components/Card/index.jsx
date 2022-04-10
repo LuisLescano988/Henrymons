@@ -11,7 +11,7 @@ export default function Card({ image, name, types, id/*, weight*/ }) {
                 <h4 className='title_types'>TYPES</h4>                
                 <h2 className='name1'>{types.map(t => t.name ? t.name + " " : t + " ")}</h2>
                 <img className='card_image' src={image} alt='img not found' width="170px" height="180px" />
-            <Link className='read_more' to={"/pokemons/" + id}>Read More</Link>
+            <Link className='read_more' to={"/pokemons/" + id}>Stats</Link>
             </div>
         </div>
     );

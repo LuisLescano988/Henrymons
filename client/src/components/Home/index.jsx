@@ -73,12 +73,12 @@ export default function Home() {
     return (
         <div>
             <div className="top_nav">
-                <h1 className="home_title">Pokemon App</h1>
+                <h1 className="home_title">Poke App</h1>
             </div>
 
             <div className="top_nav">
-                <Link className="link_create" to="/pokemons">Create your Pokemon</Link>
-                <button className="btn_reload" onClick={(e) => { handleClick(e) }}>Reload all Pokemons</button>
+                <Link className="link_create" to="/pokemons">Create a Pokemon Here</Link>
+                <button className="btn_reload" onClick={(e) => { handleClick(e) }}>Reset Pokemons!</button>
                 <SearchBar />
 
             </div>

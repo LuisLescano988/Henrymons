@@ -3,10 +3,11 @@
     font-size: 60px;
     text-align: center;
     margin-bottom: 0;
+    -webkit-text-stroke: 1px black;
 }
 
 .please_w {
-    color: #000000;
+    color: white;
     margin-top: 12px;
     font-size: 24px;
     text-align: center;

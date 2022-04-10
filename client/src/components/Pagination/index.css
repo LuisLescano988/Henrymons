@@ -8,6 +8,22 @@
 
 .li {
     float: left;
-    margin: 0px 2px;
-    border-radius: 30%;
+    margin: 0px 9px;
+    border-radius: 9px;    
+}
+
+.paginas{
+    height: 2rem;
+    width: 2rem;
+    color:white;
+    border-radius: 45%;
+    -webkit-text-stroke: 1px black;
+    background: linear-gradient(
+        red 50%,
+        white 50%
+    );    
+}
+
+.paginas:hover{
+    cursor:pointer;
 }
