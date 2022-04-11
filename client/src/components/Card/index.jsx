@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../Card/index.css';
 
-export default function Card({ image, name, types, id/*, weight*/ }) {
+export default function Card({ image, name, types, id }) {
     return (
         <div className='card'>
             <div className='card_content'>
