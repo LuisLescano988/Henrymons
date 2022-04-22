@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTypes, postPokemon } from '../../actions';
 import './index.css';
 
+
 export default function CreatePokemon() {
     const dispatch = useDispatch();
     const types = useSelector((state) => state.types);
     const existingPokemons = useSelector(state => state.pokemons)
     const navigate = useNavigate();
     const [errors, setErrors] = useState({});
+    const [active, setActive] = useState(false)
 
     const [input, setInput] = useState({
         name: "",
@@ -42,7 +44,9 @@ export default function CreatePokemon() {
     function handleSelect(e) {
         setInput({
             ...input,
-            types: [...input.types, e.target.value]
+            types: input.types.includes(e.target.value)?
+            [...input.types]:
+            [...input.types, e.target.value]
         })
         setErrors(validate({
             ...input,
@@ -60,7 +64,7 @@ export default function CreatePokemon() {
     function handleSubmit(e) {
         e.preventDefault();
         if (!input.name) {
-            return alert("*Name is required")
+            return alert("*Name is required ")
         }
         else if (typeof input.name !== 'string' || input.name.length < 2) {
             return alert('*Pokemon name is invalid')
@@ -117,56 +121,72 @@ export default function CreatePokemon() {
     function validate(input) {
         let errors = {};
         if (!input.name) {
-            errors.name = "*Name is required";
+            errors.name = "*Insert Name";
         }
-        else if (typeof input.name !== 'string' || input.name.length < 2) {
-            errors.name = '*Pokemon name is invalid';
+        else if (typeof input.name !== 'string' ||
+            input.name.length < 1 ||
+            input.name.length > 15 ||
+            input.name.includes("1") ||
+            input.name.includes("2") ||
+            input.name.includes("3") ||
+            input.name.includes("4") ||
+            input.name.includes("5") ||
+            input.name.includes("6") ||
+            input.name.includes("7") ||
+            input.name.includes("8") ||
+            input.name.includes("9") ||
+            input.name.includes("0") ||
+            input.name.includes(" ")) {
+            errors.name = '*Write without numers or blank space';
         }
         else if (existingPokemons.find((p) => p.name.toLowerCase() === input.name.toLowerCase())) {
             errors.name = `*Pokemon named -${input.name}- already exists`;
         }
         else if (!input.hp) {
-            errors.hp = "*HP is required"
+            errors.hp = "*Insert HP"
         } else if (input.hp < 0 || input.hp > 255) {
-            errors.hp = "*HP can't be negative or greater than 255 points"
+            errors.hp = "*Can't use negative or greater than 255 points"
         }
         else if (!input.attack) {
-            errors.attack = "*Attack is required"
+            errors.attack = "*Insert Attack"
         } else if (input.attack < 0 || input.attack > 255) {
-            errors.attack = "*Attack can't be negative or greater than 255 points"
+            errors.attack = "*Can't use negative or greater than 255 points"
         }
         else if (!input.defense) {
-            errors.defense = "*Defense is required"
+            errors.defense = "*Insert Defense"
         } else if (input.defense < 0 || input.defense > 255) {
-            errors.defense = "*Defense can't be negative or greater than 255 points"
+            errors.defense = "*Can't use negative or greater than 255 points"
         }
         else if (!input.speed) {
-            errors.speed = "*Speed is required"
+            errors.speed = "*Insert Speed"
         } else if (input.speed < 0 || input.speed > 255) {
-            errors.speed = "*Speed can't be negative or greater than 255 points"
+            errors.speed = "*Can't use negative or greater than 255 points"
         }
         else if (!input.height) {
-            errors.height = "*Height is required"
+            errors.height = "*Insert Height"
         } else if (input.height < 0 || input.height > 255) {
-            errors.height = "*Height can't be negative or greater than 255 points"
+            errors.height = "*Can't use negative or greater than 255 points"
         }
         else if (!input.weight) {
-            errors.weight = "*Weight is required"
-        } else if (input.weight < 0 || input.weight > 255) {
-            errors.weight = "*Weight can't be negative or greater than 255 points"
-        } else if (!input.image) {
-            errors.image = "*Image URL is required, or is going to be our default img"
-        }// }  else if (input.types.length === 0) errors.types = "*You must select at least 1 type (max 3)"
-        // else if (input.types.length > 3) errors.types = "*Max 3 types"
+            errors.weight = "*Insert Weight"
+        }
+        else if (input.weight < 0 || input.weight > 255) {
+            errors.weight = "*Can't use negative or greater than 255 points"
+        }
+        else if (!errors.name) {
+            setActive(true)
+        }
+
         return errors;
+
     };
 
     return (
         <div className='container_all'>
-            <Link to="/home">
-                <button className='btn_home'>Return to Home</button>
+            <h1>Catch Your Own Pokemon!</h1>
+            <Link to="/home" className='btn_home'>
+                Back Home
             </Link>
-            <h1>¡Create your Pokemon!</h1>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div>
                     <div>
@@ -232,15 +252,7 @@ export default function CreatePokemon() {
                             )
                         }
                     </div>
-                    <div>
-                        <label>Image: </label>
-                        <input type="url" placeholder="https://example.com" value={input.image} name='image' onChange={(e) => handleChange(e)} className='input_form' />
-                        {
-                            errors.image && (
-                                <p className='error'>{errors.image}</p>
-                            )
-                        }
-                    </div>
+
                     <div className='type_container'>
                         <label>Types: </label>
                         <select name="types" onChange={(e) => handleSelect(e)}>
@@ -250,12 +262,7 @@ export default function CreatePokemon() {
                                 ))
                             }
                         </select>
-
-                        {/* {
-                            errors.types && (
-                                <p className='error'>{errors.types}</p>
-                            )
-                        } */}
+                        
                         {input.types.map(t =>
                             <div className="list_types" key={t}>
                                 <p className='type'>- {t}</p>
@@ -265,7 +272,7 @@ export default function CreatePokemon() {
 
                     </div>
                 </div>
-                <button type='submit' className='btn_home'>Create Pokemon</button>
+                <button type='submit' className='btn_create' disabled={!active}>Click here to catch Him/Her</button>
             </form>
         </div>
     )

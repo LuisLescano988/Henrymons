@@ -2,8 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getPokemons, filterBySource, orderByName, orderByStrength, getTypes, filterByTypes,/*, showWeight*/ 
-cleanDetails} from "../../actions";
+import { getPokemons, filterBySource, orderByName, orderByStrength, getTypes, filterByTypes, 
+resetDetails} from "../../actions";
 import Pagination from "../Pagination";
 import Card from "../Card";
 import SearchBar from "../SearchBar";
@@ -14,7 +14,7 @@ import '../Home/index.css';
 export default function Home() {
     const dispatch = useDispatch();
     const allPokemons = useSelector((state) => state.pokemons);
-    const [/*order*/, setOrder] = useState('');
+    const [, setOrder] = useState('');
 
     const [currentPage, setCurrentPage] = useState(1);
     const [pokemonsPerPage] = useState(12);
@@ -26,10 +26,13 @@ export default function Home() {
     const poks = useSelector(state=>state.pokemons)
 
     useEffect(() => {
-        dispatch(cleanDetails())
-        
+        dispatch(resetDetails())               
         !poks.length&&dispatch(getPokemons());
     }, [dispatch]);
+
+    useEffect(()=>{
+        setCurrentPage(1)
+    }, [allPokemons]);
 
     const types = useSelector((state) => state.types);
     useEffect(() => {
@@ -43,8 +46,8 @@ export default function Home() {
 
     function handleFilterBySource(e) {
         dispatch(filterBySource(e.target.value))
-    }
-
+    }   
+    
     function handleFilterByTypes(e) {
         e.preventDefault();
         dispatch(filterByTypes(e.target.value));
@@ -62,27 +65,25 @@ export default function Home() {
         dispatch(orderByStrength(e.target.value));
         setCurrentPage(1);
         setOrder(`Oredenado ${e.target.value}`);
-    }
-
-    // function handleWeight(e) {
-    //     // e.preventDefault();
-    //     console.log('handleWeight')
-    //     dispatch(showWeight(e))
-    // }
+    }    
 
     return (
-        <div>
+        <div className="all">
             <div className="top_nav">
                 <h1 className="home_title">Poke App</h1>
             </div>
 
             <div className="top_nav">
-                <Link className="link_create" to="/pokemons">Create a Pokemon Here</Link>
-                <button className="btn_reload" onClick={(e) => { handleClick(e) }}>Reset Pokemons!</button>
                 <SearchBar />
+                <Link className="link_create" to="/pokemons"><div>
+                    Create a Pokemon Here</div>
+                    </Link>
+                    
+                <button className="btn_reload" onClick={(e) => { handleClick(e) }}>Refresh all Pokemons!</button>
+                
 
             </div>
-
+        <br />
             <div className="filters">
                 <select onChange={e => handleOrderByName(e)} defaultValue='Order By Name'>
                     <option disabled>Order By Name</option>
@@ -101,8 +102,8 @@ export default function Home() {
                     <option value="All">All</option>
                     <option value="Api">Api</option>
                     <option value="Created">Created</option>
-                </select>
-
+                </select>                
+                
                 <select onChange={(e) => handleFilterByTypes(e)} defaultValue='Filter By Type'>
                     <option disabled>Filter By Type</option>
                     <option value="All">All Types</option>
@@ -111,11 +112,7 @@ export default function Home() {
                             {types.name}
                         </option>
                     ))}
-                </select>
-
-                {/* <div>
-                    <button onClick={(e) => handleWeight(e)}> Button </button>
-                </div> */}
+                </select>                
             </div>
 
             <Pagination
@@ -125,6 +122,8 @@ export default function Home() {
             />
 
             <div className="cards">
+                <div className="all_cards">
+
                 {currentPokemons.length > 0 ? currentPokemons.map((p) => {
                     return (
                         <Card
@@ -141,14 +140,19 @@ export default function Home() {
                             key={p.id}
                         />
                     );
-                }) : <div className="loading_container">
-                    <img src={loading} className='loading' alt="loading please wait" />
-                    <br />
-                    <h1 className="loading_title">Loading...</h1>
-                    <h4 className="please_reload">Wait till Pikachu loads the page!</h4>
+                }) :<div className="loading_container">
+                    <img src={loading} className='loading' alt="loading please wait" />                    
+                    <h2 className="loading_title">Loading...</h2>
+                    <h4 className="please_reload">Pokemon not founded yet!</h4>
                 </div>
                 }
+                </div>
             </div>
+            <Pagination
+                pokemonsPerPage={pokemonsPerPage}
+                allPokemons={allPokemons.length}
+                paginado={paginado}
+            />
         </div>
     )
 };

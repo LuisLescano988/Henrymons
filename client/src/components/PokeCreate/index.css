@@ -1,22 +1,24 @@
 .container_all {
-    background: #ffffff;
-    padding: 12px;
-    /* padding-bottom: 6%; */
-    margin-top: 20px;
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-bottom: 20px;
+    background: rgba(254, 254, 0, 0.5);
+    padding: 1px;
+    padding-bottom: 1%;
+    margin-top: 0px;
+    margin-left: 30%;
+    margin-right: 30%;
+    position: relative;
+    justify-content:flex-start;        
     border-radius: 7px;
-    border: 1px solid #9e2a2b;
-    text-align: center;
+    border: 3px solid #9e2a2b;
+    text-align: left;
 }
 
 .input_form {
-    margin: 5px;
+    margin-top: 15px;
+    position: relative;    
 }
 
 li {
-    list-style: none;
+    list-style:none;
 }
 
 .error {
@@ -28,8 +30,8 @@ li {
 }
 
 .type_container {
-    margin-top: 5px;
-    margin-bottom: 8px;
+    margin-top: 15px;
+    margin-bottom: 0px;
 }
 
 .list_types {
@@ -37,9 +39,8 @@ li {
     justify-content: center;
 }
 
-.btn_x {
-    /* margin-left: 8px; */
-    /* padding: 5px; */
+.btn_x {    
+    margin-right: 50%;
     color: #9e2a2b;
     border-color: #9e2a2b;
     background: none;
@@ -66,4 +67,34 @@ li {
     text-align: center;
     margin-right: 5px;
     margin-top: 5px;
+}
+
+.btn_home{     
+    border: 3px solid #9e2a2b;
+    border-radius: 7px;
+    padding: 5px;
+    margin-bottom: 50px;
+    text-decoration: none;    
+}
+
+.btn_home:hover{
+    background: #9e2a2b;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn_create{    
+    border: 3px solid #9e2a2b;
+    border-radius: 7px;
+    margin-top: 10px;
+    font-size:15px;
+}
+
+.btn_create:hover{
+    background: #9e2a2b;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-color: white;
 }

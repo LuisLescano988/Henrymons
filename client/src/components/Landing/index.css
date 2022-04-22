@@ -14,15 +14,15 @@ body {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 55px;
-    margin-left: 33%;
-    margin-top: 60px;
+    margin-left: 27%;
+    margin-top: 5%;
 }
 
 .landing_btn {
     position: absolute;
     font-family: Arial, Helvetica, sans-serif;
     justify-content: center;
-    top: 25%;
+    top: 34%;
     left: 50%;
     transform: translate(-50% , -50%);    
     width: 350px;
@@ -37,7 +37,7 @@ body {
 
 .container{    
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50% , -50%) ;
 }
@@ -48,8 +48,8 @@ body {
     flex-wrap: wrap;
     background-attachment: fixed;
     overflow: hidden;
-    height: 350px;
-    width: 350px;
+    height: 250px;
+    width: 250px;
     background-image:url('../images/pokebola.gif') ;
 
 }

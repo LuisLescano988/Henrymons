@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: false,
       defaultValue:
-        "https://pokemon-the-wiki.herokuapp.com/pokemons/image/default-pokemon",
+      'https://imagenpng.com/wp-content/uploads/2016/09/Pokebola-pokeball-png-0.png',
     },
     attack: {
       type: DataTypes.INTEGER,

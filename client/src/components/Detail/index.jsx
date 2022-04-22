@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDetails, /*cleanDetails*/ } from '../../actions';
+import { getDetails, resetDetails } from '../../actions';
 import { useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import './index.css'
@@ -16,11 +16,11 @@ export default function Detail (props) {
         dispatch(getDetails(id))
     }, [id, dispatch]);    
 
-    // function cleanSubmit (e) {
-    //     e.preventDefault();
-    //     dispatch(cleanDetails())
-    //     navigate('/home')
-    // }
+    function cleanSubmit (e) {
+        e.preventDefault();
+        dispatch(resetDetails())
+        navigate('/home')
+    }    
 
     return (
         <div>
@@ -43,8 +43,8 @@ export default function Detail (props) {
                     </div>
                     <div className="btn">
                         <Link to = '/home'>
-                            <button /*onClick={(e) => cleanSubmit(e)}*/ className='btn_home'>Return to Home</button>    
-                        </Link>
+                            <button onClick={(e) => cleanSubmit(e)} className='btn_home'>Return to Home</button>    
+                        </Link>                      
                     </div>
                 </div>
                 :

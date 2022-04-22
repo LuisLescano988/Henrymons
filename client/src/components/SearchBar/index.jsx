@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-//import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getPokemonName } from '../../actions';
 import '../SearchBar/index.css';
@@ -24,8 +23,7 @@ export default function SearchBar () {
         }else{
             alert('¡Write a Pokemon!')
         }          
-    }  
-
+    }
 
     return (
         <div className="search_bar">

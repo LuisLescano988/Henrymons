@@ -2,53 +2,53 @@ const initialState = {
     pokemons: [],
     allPokemons: [],
     types: [],
-    details: {},
+    details: []
 }
 
-function rootReducer(state = initialState, action) {
-    switch (action.type) {
+function rootReducer(state = initialState, { type, payload }) {
+    switch (type) {
         case 'GET_POKEMONS':
             return {
                 ...state,
-                pokemons: action.payload,
-                allPokemons: action.payload                
+                pokemons: payload,
+                allPokemons: payload
             };
 
         case 'GET_TYPES':
             return {
                 ...state,
-                types: action.payload
+                types: payload
             };
 
         case 'FILTER_BY_SOURCE':
             const allPokemons = state.allPokemons;
-            const filterSource = action.payload === 'Created'
+            const filterSource = payload === 'Created'
                 ? allPokemons.filter(el => el.createdInDb)
                 : allPokemons.filter(el => !el.createdInDb)
             return {
                 ...state,
-                pokemons: action.payload === 'All' 
-                ? state.allPokemons : filterSource
+                pokemons: payload === 'All'
+                    ? state.allPokemons : filterSource
             };
 
         case 'FILTER_BY_TYPES':
             const filterTypes = state.allPokemons;
-            const type = action.payload === "All"
+            const type = payload === "All"
                 ? filterTypes.filter((pokemon) => pokemon.types.length > 0)
                 : filterTypes.filter(
                     (pokemon) =>
                         pokemon.types &&
                         pokemon.types
-                            .map((types) => types.name?types.name:types)
-                            .includes(action.payload)
+                            .map((types) => types.name ? types.name : types)
+                            .includes(payload)
                 );
             return {
                 ...state,
-                pokemons: type,
+                pokemons: type
             };
 
         case 'ORDER_BY_NAME':
-            let sortedArray = action.payload === 'asc' ?
+            let sortedArray = payload === 'asc' ?
                 state.pokemons.sort(function (a, b) {
                     if (a.name.toLowerCase() > b.name.toLowerCase()) {
                         return 1;
@@ -74,7 +74,7 @@ function rootReducer(state = initialState, action) {
 
         case "ORDER_BY_STRENGTH":
             let orderByStrength =
-                action.payload === "higher-strength"
+                payload === "higher-strength"
                     ? state.pokemons.sort((a, b) => {
                         return b.attack - a.attack;
                     })
@@ -85,35 +85,25 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 pokemons: orderByStrength,
             };
-            
+
         case 'GET_POKEMON_NAME':
             return {
                 ...state,
-                pokemons: action.payload
+                pokemons: payload
             };
 
         case 'GET_DETAILS':
             return {
                 ...state,
-                details: action.payload
-            };
+                details: payload
+            };        
 
-        case 'CLEAN_DETAILS':
+        case 'RESET_DETAILS':
             return {
                 ...state,
-                details: {}
+                details: []
             }
-        // case 'SHOW_WEIGHT':
-        //     let pokeAll = state.pokemons;
-        //     pokeAll.sort((a, b) => {
-        //         return a.weight - b.weight;
-        //         });
-        //     let arrSlice = pokeAll.slice(0, 4)
-        //     console.log('pokeAll', arrSlice)
-        // return {
-        //     ...state,
-        //     pokemons: arrSlice
-        // }
+
         default:
             return state;
     };

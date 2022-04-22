@@ -1,27 +1,41 @@
+/* .all{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
 .top_nav {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center;    
     margin: 0 auto;
-    gap: 10%;
-        /* -webkit-text-stroke: 3px black; */
+    gap: 5%;            
 }
 
 .cards {
-    display:inline-flex;
-    margin-left: 20%;  
+    display:flex;
     justify-content: center;
-    -webkit-text-stroke: 1px black;
+    /* justify-content:flex-start; */
+    -webkit-text-stroke:1px black;    
+    /* margin: 0px 0px 33%; */
+    /* align-items: center; */
+    margin-left: 5%;
 }
 
-.loading {
-    /* justify-content: center; */
-    margin-left: 15%;
+.card{
+ float: left;   
+    
+}
+
+.loading {    
+    margin-left: 25%;
+    height: 150px;
+    width: 230px;
 }
 
 .loading_title {
     color: white;
-    font-size: 60px;
+    font-size: 45px;
     text-align: center;
     margin-bottom: 0;
 }
@@ -54,13 +68,13 @@ select {
 .link_create {
     text-decoration: none;
     cursor: pointer;
-    color: white;
-    border: 1px solid red;
-    padding: 5px;
-    border-radius: 4px;
+    color: white;     
+    border:2px solid red;
+    border-radius: 3px; 
+    padding: 5px;    
     background: transparent;
     transition: all 0.3s ease;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -75,6 +89,7 @@ select {
 }
 
 .btn_reload {
+    text-decoration: none;
     cursor: pointer;
     padding: 5px;
     border-radius: 3px;
